@@ -1,6 +1,6 @@
 const db = require("mongoose");
 
-require("dotenv");
+require("dotenv").config();
 
 db.set('strictQuery', false);
 db.connect(

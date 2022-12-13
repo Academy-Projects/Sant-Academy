@@ -13,7 +13,10 @@ const server = http.createServer(app);
 // Middlewares
 app.use(express.json());
 app.use(cors());
-app.use(routes.authRoute)
+
+// Gerenciadores de rotas
+app.use(routes.authRoute);
+app.use(routes.gameRoute);
 
 // Iniciando servidor
 server.listen(PORT, () => {

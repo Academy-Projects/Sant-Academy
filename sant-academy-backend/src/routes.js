@@ -1,13 +1,21 @@
 const { Router } = require("express");
 
+const authController = require("./controllers/authController");
+const gameController = require("./controllers/gameController");
+
+const authMiddleware = require("./middlewares/auth");
+
 const authRoute = Router();
 const gameRoute = Router();
 
-authRoute.post("/signin", (request, response) => {
-  const { user } = request.body;
+// Auth routes (access *)
+authRoute.post("/signin", authController.testApi);
 
-  return response.status(200).json(user)
-})
+// Game routes (need a jwt access token)
+gameRoute.use(authMiddleware);
+
+// Test route
+gameRoute.get("/game", gameController.authTest);
 
 module.exports = {
   authRoute,
