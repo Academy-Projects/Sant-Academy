@@ -10,7 +10,8 @@
 		286B076E2947AEB5008119AF /* Sant_AcademyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B076D2947AEB5008119AF /* Sant_AcademyApp.swift */; };
 		286B07702947AEB5008119AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B076F2947AEB5008119AF /* ContentView.swift */; };
 		286B07722947AEB6008119AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286B07712947AEB6008119AF /* Assets.xcassets */; };
-		286B07752947AEB6008119AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286B07742947AEB6008119AF /* Preview Assets.xcassets */; };
+		286B077E2947FB39008119AF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B077D2947FB39008119AF /* CameraView.swift */; };
+		286B07822947FD8E008119AF /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B07812947FD8E008119AF /* CameraModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,7 +19,8 @@
 		286B076D2947AEB5008119AF /* Sant_AcademyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sant_AcademyApp.swift; sourceTree = "<group>"; };
 		286B076F2947AEB5008119AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		286B07712947AEB6008119AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		286B07742947AEB6008119AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		286B077D2947FB39008119AF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		286B07812947FD8E008119AF /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,20 +53,29 @@
 		286B076C2947AEB5008119AF /* Sant Academy */ = {
 			isa = PBXGroup;
 			children = (
-				286B076D2947AEB5008119AF /* Sant_AcademyApp.swift */,
-				286B076F2947AEB5008119AF /* ContentView.swift */,
-				286B07712947AEB6008119AF /* Assets.xcassets */,
-				286B07732947AEB6008119AF /* Preview Content */,
+				286B07802947FD57008119AF /* View */,
+				286B077F2947FD3A008119AF /* Model */,
 			);
 			path = "Sant Academy";
 			sourceTree = "<group>";
 		};
-		286B07732947AEB6008119AF /* Preview Content */ = {
+		286B077F2947FD3A008119AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				286B07742947AEB6008119AF /* Preview Assets.xcassets */,
+				286B076D2947AEB5008119AF /* Sant_AcademyApp.swift */,
+				286B07812947FD8E008119AF /* CameraModel.swift */,
 			);
-			path = "Preview Content";
+			path = Model;
+			sourceTree = "<group>";
+		};
+		286B07802947FD57008119AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				286B077D2947FB39008119AF /* CameraView.swift */,
+				286B076F2947AEB5008119AF /* ContentView.swift */,
+				286B07712947AEB6008119AF /* Assets.xcassets */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +136,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				286B07752947AEB6008119AF /* Preview Assets.xcassets in Resources */,
 				286B07722947AEB6008119AF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,7 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				286B077E2947FB39008119AF /* CameraView.swift in Sources */,
 				286B07702947AEB5008119AF /* ContentView.swift in Sources */,
+				286B07822947FD8E008119AF /* CameraModel.swift in Sources */,
 				286B076E2947AEB5008119AF /* Sant_AcademyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,10 +278,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Sant Academy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = XJ57BXJG95;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -295,10 +308,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Sant Academy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = XJ57BXJG95;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
