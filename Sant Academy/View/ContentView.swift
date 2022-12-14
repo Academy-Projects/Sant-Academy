@@ -16,32 +16,25 @@ struct ContentView: View {
      
     var body: some View {
         ZStack{
-            if capturedImage != nil{
+            if let capturedImage = capturedImage {
                 ZStack{
-                    Image(uiImage: capturedImage!)
+                    Image(uiImage: capturedImage)
                         .resizable()
                         .scaledToFit()
                         .ignoresSafeArea()
                     Image("mold2")
                         .resizable()
                     Button(action: {
-                    
-                        guard let images = ImageRenderer(content: body).uiImage else{
-                            return
-                        }
-                        
+                        guard let images = ImageRenderer(content: body).uiImage else{ return }
                         items.removeAll()
-                      //  items.append(Image(uiImage: capturedImage!))
-                        items.append(Image(uiImage: images))
-                 //       items.append(UIImage(named:"mold2")!)
-                        
+                        items.append(images)
                         sheet.toggle()
                     }, label: {
                         Text("share")
                             .fontWeight(.heavy)
                     })
                 }
-            }else {
+            } else {
                 Image("mold2")
                     .resizable()
                 Color(UIColor.systemBackground)

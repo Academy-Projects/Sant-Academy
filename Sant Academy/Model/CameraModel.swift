@@ -10,8 +10,8 @@ import AVFoundation
 import SwiftUI
 
 class CameraService {
-    var session : AVCaptureSession?
-    var delegate : AVCapturePhotoCaptureDelegate?
+    var session: AVCaptureSession?
+    var delegate: AVCapturePhotoCaptureDelegate?
     
     let output = AVCapturePhotoOutput()
     let previewLayer = AVCaptureVideoPreviewLayer()
@@ -56,8 +56,9 @@ class CameraService {
                 
                 previewLayer.videoGravity = .resizeAspectFill
                 previewLayer.session = session
-                
-                session.startRunning()
+                DispatchQueue.global(qos: .userInitiated).async {
+                    session.startRunning()
+                }
                 self.session = session
             } catch {
                 completion(error)
@@ -66,7 +67,8 @@ class CameraService {
         
     }
     func capturePhoto(with settings: AVCapturePhotoSettings = AVCapturePhotoSettings()){
-        output.capturePhoto(with: settings, delegate: delegate!)
+        guard let delegate = delegate else { return  }
+        output.capturePhoto(with: settings, delegate: delegate)
     }
 }
 
