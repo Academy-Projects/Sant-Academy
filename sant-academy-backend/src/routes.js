@@ -16,7 +16,8 @@ authRoute.post("/signin", async (request, response) => authController.createUser
 gameRoute.use(authMiddleware);
 
 // Test route
-gameRoute.get("/game", gameController.authTest);
+gameRoute.post("/teste", gameController.authTest);
+// gameRoute.post("/channel", gameController);
 
 module.exports = {
   authRoute,
