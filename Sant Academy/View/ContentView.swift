@@ -11,19 +11,50 @@ struct ContentView: View {
     
     @State private var capturedImage: UIImage? = nil
     @State private var isCustomCameraViewPresent = false
+    @State var items : [Any] = []
+    @State var sheet = false
      
     var body: some View {
         ZStack{
             if capturedImage != nil{
-                Image(uiImage: capturedImage!)
-                    .resizable()
-                    .scaledToFit()
-                    .ignoresSafeArea()
+                ZStack{
+                    Image(uiImage: capturedImage!)
+                        .resizable()
+                        .scaledToFit()
+                        .ignoresSafeArea()
+                    Image("mold2")
+                        .resizable()
+                    Button(action: {
+                    
+                        guard let images = ImageRenderer(content: body).uiImage else{
+                            return
+                        }
+                        
+                        items.removeAll()
+                      //  items.append(Image(uiImage: capturedImage!))
+                        items.append(Image(uiImage: images))
+                 //       items.append(UIImage(named:"mold2")!)
+                        
+                        sheet.toggle()
+                    }, label: {
+                        Text("share")
+                            .fontWeight(.heavy)
+                    })
+                }
             }else {
+                Image("mold2")
+                    .resizable()
                 Color(UIColor.systemBackground)
             }
             VStack {
                 Spacer()
+
+                Button("click to save"){
+                    guard let image = ImageRenderer(content: body).uiImage else{
+                        return
+                    }
+                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                }
                 Button(action: {
                     isCustomCameraViewPresent.toggle()
                     
@@ -42,13 +73,32 @@ struct ContentView: View {
                     CameraView(caturedImage: $capturedImage)
                 })
             }
+            .sheet(isPresented: $sheet, content: {
+                ShareSheet(items: items)
+            })
             .padding()
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+
+struct ShareSheet: UIViewControllerRepresentable{
+    
+    var items : [Any]
+    
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        
+        return controller
     }
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+        
+    }
+}
+
+@MainActor
+private func generateSnapshot() -> UIImage {
+    let renderer = ImageRenderer(content: ContentView())
+ 
+    return renderer.uiImage ?? UIImage()
 }
