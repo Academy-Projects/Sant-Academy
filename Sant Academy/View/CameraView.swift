@@ -32,6 +32,8 @@ struct CameraView: View {
                 }
             }
             VStack{
+                Image("mold2")
+                    .resizable()
                 HStack {
                     Spacer()
                     Button(action: {
