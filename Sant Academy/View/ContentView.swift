@@ -16,16 +16,12 @@ struct ContentView: View {
      
     var body: some View {
         ZStack{
-            if let capturedImage = capturedImage {
+            if capturedImage != nil {
                 ZStack{
-                    Image(uiImage: capturedImage)
-                        .resizable()
-                        .scaledToFit()
-                        .ignoresSafeArea()
-                    Image("mold2")
-                        .resizable()
+                    creenshot
+                    
                     Button(action: {
-                        guard let images = ImageRenderer(content: body).uiImage else{ return }
+                        guard let images = ImageRenderer(content: creenshot).uiImage else{ return }
                         items.removeAll()
                         items.append(images)
                         sheet.toggle()
@@ -37,7 +33,7 @@ struct ContentView: View {
                         Spacer()
 
                         Button("click to save"){
-                            guard let image = ImageRenderer(content: body).uiImage else{
+                            guard let image = ImageRenderer(content: creenshot).uiImage else{
                                 return
                             }
                             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
@@ -72,6 +68,24 @@ struct ContentView: View {
             }
         }
     }
+    
+    var creenshot: some View{
+        ZStack{
+            if let capturedImage = capturedImage {
+                Image(uiImage: capturedImage)
+                    .resizable()
+                    .scaledToFit()
+                    .ignoresSafeArea()
+                Image("mold3")
+                    .resizable()
+            }else {
+                //                Image("mold2")
+                //                    .resizable()
+                //                Color(UIColor.systemBackground)
+                                CameraView(caturedImage: $capturedImage)
+            }
+        }
+    }
 }
 
 
@@ -89,16 +103,4 @@ struct ShareSheet: UIViewControllerRepresentable{
     }
 }
 
-@MainActor
-private func generateSnapshot() -> UIImage {
-    let renderer = ImageRenderer(content: ContentView())
- 
-    return renderer.uiImage ?? UIImage()
-}
-//
-//Circle()
-//    .fill(Color.white)
-//    .frame(width: 65, height: 65)
-//Circle()
-//    .stroke(Color.white, lineWidth: 2)
-//    .frame(width: 70, height: 70)
+

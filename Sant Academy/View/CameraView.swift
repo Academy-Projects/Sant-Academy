@@ -34,7 +34,7 @@ struct CameraView: View {
                 }
             }
             VStack{
-                Image("mold2")
+                Image("mold3")
                     .resizable()
                 
                 Spacer()
