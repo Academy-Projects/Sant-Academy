@@ -4,7 +4,8 @@ const authService = require("../services/authService");
 class Auth {
   async createUser(request, response) {
     // Check if the user has an username
-    if (!request.body.username) return response.status(403);
+    const username = request.body.username;
+    if (!username) return response.status(403);
 
     const newUser = await dbService.createUser(user);
     // Assure that the user was creared
@@ -27,9 +28,10 @@ class Auth {
 
   async testApi(request, response) {
     // Check if the user has an username
-    if (!request.body.username) return response.status(403);
+    const username = request.body.username;
+    if (!username) return response.status(403);
 
-    const queryUser = await dbService.getUser(user.username);
+    const queryUser = await dbService.getUser(username);
 
     return response
       .status(200)
