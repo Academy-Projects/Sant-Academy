@@ -1,13 +1,12 @@
 const express = require("express");
-const http = require("http");
 const cors = require("cors");
+const ws = require("express-ws");
 
 const app = express();
+const wsInstance = ws(app);
 
 const _ = require("./database/connection");
 const routes = require("./routes");
-
-const server = http.createServer(app);
 
 // Middlewares
 app.use(express.json());
@@ -17,6 +16,12 @@ app.use(cors());
 app.use("/auth", routes.authRoute);
 app.use("/game", routes.gameRoute);
 
-// Iniciando servidor
+// websocket teste
+app.ws("/socketteste", (ws, _) => {
+  ws.on("message", console.log);
+})
 
-module.exports = server;
+module.exports = {
+  server: app,
+  socket: wsInstance.getWss()
+};
