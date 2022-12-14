@@ -15,9 +15,16 @@ authRoute.post("/signin", async (request, response) => authController.createUser
 // Game routes (need a jwt access token)
 gameRoute.use(authMiddleware);
 
-// Test route
+// JWT Test route
 gameRoute.post("/teste", gameController.authTest);
-// gameRoute.post("/channel", gameController);
+
+gameRoute.ws("/room", (ws, request) => {
+  console.log(request.tokenData);
+
+  ws.on("message", (data) => {
+    console.log(data);
+  })
+})
 
 module.exports = {
   authRoute,

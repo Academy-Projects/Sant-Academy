@@ -7,11 +7,10 @@ class Auth {
     const username = request.body.username;
     if (!username) return response.status(403);
 
-    const newUser = await dbService.createUser(user);
+    const newUser = await dbService.createUser({ username });
     // Assure that the user was creared
     if (!newUser) return response.status(403);
 
-    console.log(newUser);
     // Creating access token for the new user
     const token = authService.createToken({
       id: newUser._id,
