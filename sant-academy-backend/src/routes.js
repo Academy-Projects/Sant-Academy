@@ -9,7 +9,8 @@ const authRoute = Router();
 const gameRoute = Router();
 
 // Auth routes (access *)
-authRoute.post("/signin", authController.testApi);
+authRoute.post("/teste", async (request, response) => authController.testApi(request, response));
+authRoute.post("/signin", async (request, response) => authController.createUser(request, response));
 
 // Game routes (need a jwt access token)
 gameRoute.use(authMiddleware);

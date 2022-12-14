@@ -5,7 +5,7 @@ require("dotenv").config();
 // Function to verify access token
 function authMiddleware(request, response, next) {
   const authHeader = request.headers.authorization;
-
+  
   if (!authHeader) 
     return response.status(401).send({ error: "Token not found" });
 
@@ -16,7 +16,7 @@ function authMiddleware(request, response, next) {
   
   const [ scheme, token ] = tokenParts;
 
-  if (!/^Bearer$^/i.test(scheme))
+  if (scheme !== "Bearer")
     return response.status(401).send({ error: "Token malformatted" });
   
   jwt.verify(token, process.env.AUTH_TOKEN, (error, decoded) => {
