@@ -24,7 +24,9 @@ struct CameraView: View {
                     if let data = photo.fileDataRepresentation(){
                         caturedImage = UIImage(data: data)
                         presentationMode.wrappedValue.dismiss()
-                    }else{
+                            
+                    }
+                    else{
                         print("erro: nao foi encontrada nenhuma imagem")
                     }
                 case .failure(let err):
@@ -34,24 +36,32 @@ struct CameraView: View {
             VStack{
                 Image("mold2")
                     .resizable()
+                
+                Spacer()
+                
                 HStack {
-                    Spacer()
                     Button(action: {
                         cameraService.capturePhoto()
                     }, label: {
                         ZStack{
-                            Image(systemName: "arrow.triangle.2.circlepath.camera")
-                                .foregroundColor(.black)
-                                .padding()
-                                .background(Color.white)
-                                .clipShape(Circle())
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: 65, height: 65)
+                            Circle()
+                                .stroke(Color.white, lineWidth: 2)
+                                .frame(width: 70, height: 70)
                         }
-                        .padding(.trailing, 15)
-                        .padding(.top,20)
                     })
+                    .padding(.bottom, 10)
                 }
-                Spacer()
-            }
+//                Spacer()
+            }.frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
+
+//Image(systemName: "arrow.triangle.2.circlepath.camera")
+//    .foregroundColor(.black)
+//    .padding()
+//    .background(Color.white)
+//    .clipShape(Circle())

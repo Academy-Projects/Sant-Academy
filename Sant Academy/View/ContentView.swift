@@ -33,43 +33,43 @@ struct ContentView: View {
                         Text("share")
                             .fontWeight(.heavy)
                     })
+                    VStack {
+                        Spacer()
+
+                        Button("click to save"){
+                            guard let image = ImageRenderer(content: body).uiImage else{
+                                return
+                            }
+                            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                        }
+                        Button(action: {
+                            isCustomCameraViewPresent.toggle()
+                            
+                        }, label: {
+                                ZStack{
+                                    Image(systemName: "arrow.triangle.2.circlepath.camera")
+                                        .foregroundColor(.black)
+                                        .padding()
+                                        .background(Color.white)
+                                        .clipShape(Circle())
+                                }.padding(.bottom, 20)
+                            })
+                        .padding(.bottom)
+                        .fullScreenCover(isPresented: $isCustomCameraViewPresent, content: {
+                            CameraView(caturedImage: $capturedImage)
+                        })
+                    }
+                    .sheet(isPresented: $sheet, content: {
+                        ShareSheet(items: items)
+                    })
+                    .padding()
                 }
             } else {
-                Image("mold2")
-                    .resizable()
-                Color(UIColor.systemBackground)
+//                Image("mold2")
+//                    .resizable()
+//                Color(UIColor.systemBackground)
+                CameraView(caturedImage: $capturedImage)
             }
-            VStack {
-                Spacer()
-
-                Button("click to save"){
-                    guard let image = ImageRenderer(content: body).uiImage else{
-                        return
-                    }
-                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                }
-                Button(action: {
-                    isCustomCameraViewPresent.toggle()
-                    
-                }, label: {
-                        ZStack{
-                            Circle()
-                                .fill(Color.white)
-                                .frame(width: 65, height: 65)
-                            Circle()
-                                .stroke(Color.white, lineWidth: 2)
-                                .frame(width: 70, height: 70)
-                        }.padding(.bottom, 20)
-                    })
-                .padding(.bottom)
-                .sheet(isPresented: $isCustomCameraViewPresent, content: {
-                    CameraView(caturedImage: $capturedImage)
-                })
-            }
-            .sheet(isPresented: $sheet, content: {
-                ShareSheet(items: items)
-            })
-            .padding()
         }
     }
 }
@@ -95,3 +95,10 @@ private func generateSnapshot() -> UIImage {
  
     return renderer.uiImage ?? UIImage()
 }
+//
+//Circle()
+//    .fill(Color.white)
+//    .frame(width: 65, height: 65)
+//Circle()
+//    .stroke(Color.white, lineWidth: 2)
+//    .frame(width: 70, height: 70)
