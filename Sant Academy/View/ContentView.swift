@@ -11,91 +11,91 @@ struct ContentView: View {
     
     @State private var capturedImage: UIImage? = nil
     @State private var isCustomCameraViewPresent = false
+    @State private var showingOptions = false
     @State var items : [Any] = []
     @State var sheet = false
-    @State private var showingOptions = false
-     
+    
     var body: some View {
         ZStack{
             if capturedImage != nil {
                 ZStack{
                     creenshot
-                    Button(action: {
-                        showingOptions = true
-                    }, label: {
-                        Image(systemName: "square.and.arrow.up")
-                    }).confirmationDialog("", isPresented: $showingOptions, titleVisibility: .hidden){
+//                        .scaledToFit()
+                    HStack {
+                        VStack {
+                            Button(action: {
+                                isCustomCameraViewPresent.toggle()
+                            }, label: {
+                                ZStack{
+                                    Image(systemName: "x.circle.fill")
+                                        .resizable()
+                                        .foregroundColor(.white)
+                                        .frame(width: UIScreen.main.bounds.width * 0.07, height: UIScreen.main.bounds.height * 0.033)
+                                        .padding(.top, 8)
+                                }
+                            })
+                            .fullScreenCover(isPresented: $isCustomCameraViewPresent, content: {
+                                CameraView(caturedImage: $capturedImage)
+                            })
+                            Spacer()
+                        }
                         
-                        Button(action: {
-                            guard let images = ImageRenderer(content: creenshot).uiImage else{ return }
-                            items.removeAll()
-                            items.append(images)
-                            sheet.toggle()
-                        }, label: {
-                            Text("share")
-                                .fontWeight(.heavy)
-                        })
+                        Spacer()
                         
-                        Button("click to save"){
-                            guard let image = ImageRenderer(content: creenshot).uiImage else{
-                                return
+                        VStack {
+                            Button(action: {
+                                showingOptions = true
+                            }, label: {
+                                Image(systemName: "square.and.arrow.up")
+                                    .resizable()
+                                    .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.height * 0.033)
+                                    .foregroundColor(.white)
+                            })
+                            .confirmationDialog("", isPresented: $showingOptions, titleVisibility: .hidden){
+                                Button(action: {
+                                    guard let images = ImageRenderer(content: creenshot).uiImage else{ return }
+                                    items.removeAll()
+                                    items.append(images)
+                                    sheet.toggle()
+                                }, label: {
+                                    Text("Compartilhar")
+                                        .fontWeight(.heavy)
+                                })
+                                Button("Salvar") {
+                                    guard let image = ImageRenderer(content: creenshot).uiImage else{
+                                        return
+                                    }
+                                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                                }
                             }
-                            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                            Spacer()
                         }
                     }
-                 
-                    VStack {
-                        Spacer()
-                        Button(action: {
-                            isCustomCameraViewPresent.toggle()
-                            
-                        }, label: {
-                                ZStack{
-                                    Image(systemName: "arrow.triangle.2.circlepath.camera")
-                                        .foregroundColor(.black)
-                                        .padding()
-                                        .background(Color.white)
-                                        .clipShape(Circle())
-                                }.padding(.bottom, 20)
-                            })
-                        .padding(.bottom)
-                        .fullScreenCover(isPresented: $isCustomCameraViewPresent, content: {
-                            CameraView(caturedImage: $capturedImage)
+                        .sheet(isPresented: $sheet, content: {
+                            ShareSheet(items: items)
                         })
-                    }
-                    .sheet(isPresented: $sheet, content: {
-                        ShareSheet(items: items)
-                    })
-                    .padding()
+                        .padding()
                 }
             } else {
-//                Image("mold2")
-//                    .resizable()
-//                Color(UIColor.systemBackground)
                 CameraView(caturedImage: $capturedImage)
             }
         }
     }
-    
     var creenshot: some View{
         ZStack{
             if let capturedImage = capturedImage {
                 Image(uiImage: capturedImage)
                     .resizable()
                     .scaledToFit()
-                    .ignoresSafeArea()
-                Image("mold3")
+
+                Image("MolduraMenor")
                     .resizable()
             }else {
-                //                Image("mold2")
-                //                    .resizable()
-                //                Color(UIColor.systemBackground)
-                                CameraView(caturedImage: $capturedImage)
+                CameraView(caturedImage: $capturedImage)
             }
         }
     }
 }
-
 
 struct ShareSheet: UIViewControllerRepresentable{
     
@@ -110,5 +110,3 @@ struct ShareSheet: UIViewControllerRepresentable{
         
     }
 }
-
-

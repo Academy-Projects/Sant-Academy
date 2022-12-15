@@ -27,41 +27,39 @@ struct CameraView: View {
                             
                     }
                     else{
-                        print("erro: nao foi encontrada nenhuma imagem")
+                        print("ERRO: Não foi encontrada nenhuma imagem.")
                     }
                 case .failure(let err):
                     print(err.localizedDescription)
                 }
             }
-            VStack{
-                Image("mold3")
+            ZStack{
+                Image("MolduraMenor")
                     .resizable()
-                
-                Spacer()
-                
-                HStack {
+                    .edgesIgnoringSafeArea(.bottom)
+            
+                VStack {
+                    Spacer()
                     Button(action: {
                         cameraService.capturePhoto()
                     }, label: {
                         ZStack{
                             Circle()
-                                .fill(Color.white)
-                                .frame(width: 65, height: 65)
+                                .stroke(Color.redButton, lineWidth: 8)
+                                .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.height * 0.1)
                             Circle()
-                                .stroke(Color.white, lineWidth: 2)
-                                .frame(width: 70, height: 70)
+                                .fill(Color.greenButton)
+                                .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.height * 0.09)
+                                
+                            Image(systemName: "camera")
+                                .resizable()
+                                .foregroundColor(.white)
+                                .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.height * 0.03)
                         }
-                    })
-                    .padding(.bottom, 10)
+                    }).padding(.bottom, 30)
                 }
-//                Spacer()
-            }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
         }
     }
 }
 
-//Image(systemName: "arrow.triangle.2.circlepath.camera")
-//    .foregroundColor(.black)
-//    .padding()
-//    .background(Color.white)
-//    .clipShape(Circle())

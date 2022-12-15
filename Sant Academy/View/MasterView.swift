@@ -28,27 +28,7 @@ struct MasterView: View {
         
         ZStack{
             
-//            VStack(spacing: 0){
-                
-//                Button {
-//                    //   presentationMode.wrappedValue.dismiss()
-//                } label: {
-//
-//                    ZStack{
-//                        Circle()
-//                            .fill(Color.black)
-//
-//                        Image(systemName: "chevron.left")
-//                            .font(.system(size: 24))
-//                            .fontWeight(.semibold)
-//                            .foregroundColor(.white)
-//                    }
-//                    .frame(width: UIScreen.main.bounds.width*0.0426, height: UIScreen.main.bounds.height*0.09)
-//
-//
-//                }
-//                .padding(.top, 47)
-//                .frame(maxWidth: .infinity, alignment: .leading)
+            Color.background.edgesIgnoringSafeArea(.all)
                 
                 HStack(alignment: .center){
                     
@@ -56,10 +36,9 @@ struct MasterView: View {
                      //     Color.gray
                         VStack(spacing: 0){
                             
-                            Button{
+                            Button {
                                    presentationMode.wrappedValue.dismiss()
-//                                HomeView()
-                                
+
                             } label: {
                                 
                                 ZStack{
@@ -96,6 +75,8 @@ struct MasterView: View {
 
                             Button {
                                 print("clicked")
+                                viewModel.raffle()
+                                
                             } label: {
                                 Text("Sortear")
                                     .font(.system(size: 17))
@@ -116,6 +97,11 @@ struct MasterView: View {
                     //Spacer()
                     
                     ZStack(alignment: .center){
+                        
+                        Rectangle()
+                            .fill(.background)
+                            .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+                            
                         VStack(spacing: 0){
  
                             
@@ -136,18 +122,14 @@ struct MasterView: View {
                                             .fontWeight(.medium)
                                             .foregroundColor(.black)
                                     }
-                                    .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
+                                   // .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
                                     
                                 }
                             }
-                            //                        NavigationLink {
-                            //                            ContentView()
-                            //                        } label: {
-                            //                            Text("Camera")
-                            //                        }
-                            
-                          //  Spacer()
-                        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+
+                        }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+                        
+                        Spacer()
                         
                     }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
                     
