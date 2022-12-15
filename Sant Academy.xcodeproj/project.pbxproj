@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		005E5F14294A4141003F33DB /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E5F13294A4141003F33DB /* WebSocketManager.swift */; };
 		286B076E2947AEB5008119AF /* Sant_AcademyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B076D2947AEB5008119AF /* Sant_AcademyApp.swift */; };
 		286B07702947AEB5008119AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B076F2947AEB5008119AF /* ContentView.swift */; };
 		286B07722947AEB6008119AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286B07712947AEB6008119AF /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		005E5F13294A4141003F33DB /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 		286B076A2947AEB5008119AF /* Sant Academy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sant Academy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		286B076D2947AEB5008119AF /* Sant_AcademyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sant_AcademyApp.swift; sourceTree = "<group>"; };
 		286B076F2947AEB5008119AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				286B07832949457E008119AF /* Sant-Academy-Info.plist */,
 				286B07802947FD57008119AF /* View */,
 				286B077F2947FD3A008119AF /* Model */,
+				005E5F13294A4141003F33DB /* WebSocketManager.swift */,
 			);
 			path = "Sant Academy";
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				286B077E2947FB39008119AF /* CameraView.swift in Sources */,
+				005E5F14294A4141003F33DB /* WebSocketManager.swift in Sources */,
 				286B07702947AEB5008119AF /* ContentView.swift in Sources */,
 				286B07822947FD8E008119AF /* CameraModel.swift in Sources */,
 				286B076E2947AEB5008119AF /* Sant_AcademyApp.swift in Sources */,
