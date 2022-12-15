@@ -23,8 +23,7 @@ struct CameraView: View {
                 case .success(let photo):
                     if let data = photo.fileDataRepresentation(){
                         caturedImage = UIImage(data: data)
-                        presentationMode.wrappedValue.dismiss()
-                            
+//                        presentationMode.wrappedValue.dismiss()
                     }
                     else{
                         print("ERRO: Não foi encontrada nenhuma imagem.")

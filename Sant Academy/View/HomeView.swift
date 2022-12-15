@@ -7,7 +7,10 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     let vm = MasterView.ViewModel()
+    @State private var capturedImage: UIImage? = nil
+    
     var body: some View {
         GeometryReader{ geometry in
             ScrollView(.vertical){
