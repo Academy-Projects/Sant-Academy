@@ -13,31 +13,39 @@ struct ContentView: View {
     @State private var isCustomCameraViewPresent = false
     @State var items : [Any] = []
     @State var sheet = false
+    @State private var showingOptions = false
      
     var body: some View {
         ZStack{
             if capturedImage != nil {
                 ZStack{
                     creenshot
-                    
                     Button(action: {
-                        guard let images = ImageRenderer(content: creenshot).uiImage else{ return }
-                        items.removeAll()
-                        items.append(images)
-                        sheet.toggle()
+                        showingOptions = true
                     }, label: {
-                        Text("share")
-                            .fontWeight(.heavy)
-                    })
-                    VStack {
-                        Spacer()
-
+                        Image(systemName: "square.and.arrow.up")
+                    }).confirmationDialog("", isPresented: $showingOptions, titleVisibility: .hidden){
+                        
+                        Button(action: {
+                            guard let images = ImageRenderer(content: creenshot).uiImage else{ return }
+                            items.removeAll()
+                            items.append(images)
+                            sheet.toggle()
+                        }, label: {
+                            Text("share")
+                                .fontWeight(.heavy)
+                        })
+                        
                         Button("click to save"){
                             guard let image = ImageRenderer(content: creenshot).uiImage else{
                                 return
                             }
                             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                         }
+                    }
+                 
+                    VStack {
+                        Spacer()
                         Button(action: {
                             isCustomCameraViewPresent.toggle()
                             
