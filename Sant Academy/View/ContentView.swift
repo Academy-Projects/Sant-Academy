@@ -53,9 +53,26 @@ struct ContentView: View {
                         .padding(.bottom, 50)
                         Spacer()
                     }
-                    
-                    CloseView()
-                    
+                    HStack{
+                        Spacer()
+                        VStack {
+                            Button(action: {
+                                isCustomCameraViewPresent.toggle()
+                            }, label: {
+                                ZStack{
+                                    Image(systemName: "x.circle.fill")
+                                        .resizable()
+                                        .foregroundColor(.white)
+                                        .frame(width: 30, height: 30)
+                                        .padding(.top, 8)
+                                }.padding(.top, 15)
+                            })
+                            .fullScreenCover(isPresented: $isCustomCameraViewPresent, content: {
+                                CameraView(caturedImage: $capturedImage)
+                            })
+                            Spacer()
+                        }
+                    }
                         .sheet(isPresented: $sheet, content: {
                             ShareSheet(items: items)
                         })
