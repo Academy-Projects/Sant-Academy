@@ -29,50 +29,51 @@ struct MasterView: View {
         ZStack{
             
             Color.background.edgesIgnoringSafeArea(.all)
+            
+            HStack(alignment: .center){
                 
-                HStack(alignment: .center){
-                    
-                    ZStack(alignment: .top){
-                     //     Color.gray
-                        VStack(spacing: 0){
+                ZStack(alignment: .top){
+                    //     Color.gray
+                    VStack(spacing: 0){
+                        
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
                             
-                            Button {
-                                   presentationMode.wrappedValue.dismiss()
-
-                            } label: {
+                        } label: {
+                            
+                            ZStack{
+                                Circle()
+                                    .fill(Color.black)
                                 
-                                ZStack{
-                                    Circle()
-                                        .fill(Color.black)
-                                    
-                                    Image(systemName: "chevron.left")
-                                        .font(.system(size: 24))
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                }
-                                .frame(width: UIScreen.main.bounds.width*0.0426, height: UIScreen.main.bounds.height*0.09)
-                                
-                                
+                                Image(systemName: "chevron.left")
+                                    .font(.system(size: 24))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
                             }
-                           // .padding(.top, 47)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                      
+                            .frame(width: UIScreen.main.bounds.width*0.0426, height: UIScreen.main.bounds.height*0.09)
+                            
+                            
+                        }
+                        // .padding(.top, 47)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                       
                             Text("Número da Sala")
                                 .font(.system(size: 20))
                                 .fontWeight(.semibold)
+                                .foregroundColor(.black)
                                 .padding(.bottom, 17)
                             
                             ZStack{
                                 Circle()
                                     .fill(Color.green)
                                     .frame(width: UIScreen.main.bounds.width*0.1729)
-                                    
+                                
                                 Circle()
                                     .fill(Color.red)
                                     .frame(width: UIScreen.main.bounds.width*0.1445)
                             }
                             .padding(.bottom, 33)
-
+                            
                             Button {
                                 print("clicked")
                                 viewModel.raffle()
@@ -81,34 +82,36 @@ struct MasterView: View {
                                 Text("Sortear")
                                     .font(.system(size: 17))
                                     .fontWeight(.semibold)
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color.black)
                                     .frame(width: UIScreen.main.bounds.width*0.2701, height: UIScreen.main.bounds.height*0.1282)
-                                    .background(Rectangle().fill(Color.black))
-                                    .cornerRadius(22)
+                                    .background(Rectangle().fill(Color.yellowButton))
+                                    .cornerRadius(30)
                             }
-                            
-                           // Spacer()
-                            
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    }
-                    .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                    
-                    //Spacer()
-                    
-                    ZStack(alignment: .center){
                         
-                        Rectangle()
-                            .fill(.background)
-                            .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                            
-                        VStack(spacing: 0){
- 
-                            
+                        // Spacer()
+                        
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+                
+                //Spacer()
+                
+                ZStack(alignment: .center){
+                    
+                    Rectangle()
+                        .fill(Color.background)
+                        .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+                    
+                    VStack(spacing: 0){
+                        
+                        ScrollView(){
                             Text("Histórico de bolas chamadas")
                                 .font(.system(size: 20))
                                 .fontWeight(.semibold)
+                                .foregroundColor(.black)
                                 .padding(.bottom, 17)
+                                .padding(.top, 47)
                             
                             LazyVGrid(columns: columns){
                                 
@@ -122,33 +125,33 @@ struct MasterView: View {
                                             .fontWeight(.medium)
                                             .foregroundColor(.black)
                                     }
-                                   // .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
+                                    // .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
                                     
                                 }
                             }
-
+                            
                         }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
                         
                         Spacer()
-                        
-                    }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                    
-                    
-                    
+                    }
+                }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+                
+                
+                
                     .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                }
-//            }
-//            .frame(width: UIScreen.main.bounds.width*0.88, height: UIScreen.main.bounds.height*0.856)
+            }
+            //            }
+            //            .frame(width: UIScreen.main.bounds.width*0.88, height: UIScreen.main.bounds.height*0.856)
         }
         .navigationBarHidden(true)
         .onAppear{
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
             AppDelegate.orientationLock = .landscape
         }
-        //        .onDisappear{
-        //            AppDelegate.orientationLock = .all
-        //        }
-        //
+        .onDisappear{
+            viewModel.resetGame()
+        }
+        
     }
 }
 

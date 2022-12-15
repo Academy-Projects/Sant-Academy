@@ -47,5 +47,11 @@ extension MasterView {
                 return
             }
         }
+        
+        func resetGame() {
+            allNumbers = Array(0...75)
+            drawNumbers.removeAll()
+            isGameCompleted = false
+        }
     }
 }
