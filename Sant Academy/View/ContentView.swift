@@ -21,6 +21,7 @@ struct ContentView: View {
                 ZStack{
                     creenshot
 //                        .scaledToFit()
+                        .navigationBarHidden(true)
                     HStack {
                         VStack {
                             Button(action: {
@@ -80,7 +81,7 @@ struct ContentView: View {
             } else {
                 CameraView(caturedImage: $capturedImage)
             }
-        }.navigationBarHidden(true)
+        }
     }
     var creenshot: some View{
         ZStack{
@@ -89,7 +90,7 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit()
 
-                Image("MolduraMenor")
+                Image("Moldura2")
                     .resizable()
             }else {
                 CameraView(caturedImage: $capturedImage)

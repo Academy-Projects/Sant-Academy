@@ -33,7 +33,7 @@ struct CameraView: View {
                 }
             }
             ZStack{
-                Image("MolduraMenor")
+                Image("Moldura2")
                     .resizable()
                     .edgesIgnoringSafeArea(.bottom)
             
