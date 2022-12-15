@@ -14,6 +14,7 @@
 		286B07722947AEB6008119AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286B07712947AEB6008119AF /* Assets.xcassets */; };
 		286B077E2947FB39008119AF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B077D2947FB39008119AF /* CameraView.swift */; };
 		286B07822947FD8E008119AF /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B07812947FD8E008119AF /* CameraModel.swift */; };
+		785466EF294B5AC000797FF4 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785466EE294B5AC000797FF4 /* MasterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		286B077D2947FB39008119AF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		286B07812947FD8E008119AF /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		286B07832949457E008119AF /* Sant-Academy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Sant-Academy-Info.plist"; sourceTree = SOURCE_ROOT; };
+		785466EE294B5AC000797FF4 /* MasterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				286B07832949457E008119AF /* Sant-Academy-Info.plist */,
+				785466ED294B5AA500797FF4 /* ViewModel */,
 				286B07802947FD57008119AF /* View */,
 				286B077F2947FD3A008119AF /* Model */,
 				005E5F13294A4141003F33DB /* WebSocketManager.swift */,
@@ -84,6 +87,14 @@
 				286B07712947AEB6008119AF /* Assets.xcassets */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		785466ED294B5AA500797FF4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				785466EE294B5AC000797FF4 /* MasterViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785466EF294B5AC000797FF4 /* MasterViewModel.swift in Sources */,
 				005E5F18294AE1B9003F33DB /* MasterView.swift in Sources */,
 				286B077E2947FB39008119AF /* CameraView.swift in Sources */,
 				005E5F14294A4141003F33DB /* WebSocketManager.swift in Sources */,

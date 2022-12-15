@@ -11,6 +11,12 @@ struct MasterView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @ObservedObject var viewModel: ViewModel
+    
+    init(viewModel: MasterView.ViewModel) {
+        self.viewModel = viewModel
+    }
+    
     let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -18,7 +24,6 @@ struct MasterView: View {
         GridItem(.flexible())
     ]
     
-    let items = (1...12).map {"\($0)"}
     var body: some View {
         
         ZStack{
@@ -93,7 +98,7 @@ struct MasterView: View {
                             
                             LazyVGrid(columns: columns){
                                 
-                                ForEach(items, id: \.self ) { item in
+                                ForEach(viewModel.drawNumbers, id: \.self ) { item in
                                     
                                     ZStack{
                                         Circle()
@@ -139,8 +144,15 @@ struct MasterView: View {
 
 struct MasterView_Previews: PreviewProvider {
     static var previews: some View {
-        MasterView()
+        let vm = MasterView.ViewModel()
+        
+        MasterView(viewModel: vm)
             .previewInterfaceOrientation(.landscapeLeft)
+            .onAppear {
+                for _ in 0..<12 {
+                    vm.raffle()
+                }
+            }
         
     }
 }
