@@ -4,8 +4,8 @@ const cors = require("cors");
 const { WebSocketServer } = require("ws");
 
 const app = express();
-const server = http.createServer(app)
-const socket = new WebSocketServer({ server })
+const server = http.createServer(app);
+const socket = new WebSocketServer({ server });
 
 const _ = require("./database/connection");
 const routes = require("./routes");
