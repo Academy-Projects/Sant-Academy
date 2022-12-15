@@ -11,7 +11,9 @@ import Foundation
 extension MasterView {
     class ViewModel: ObservableObject {
         
-        @Published private(set) var drawNumbers: [String] = []
+        @Published private(set) var drawNumbers: [String] = [] {
+            didSet { print("Oi") }
+        }
         @Published private(set) var isGameCompleted: Bool = false
         
         var lastResult: String {
@@ -44,6 +46,12 @@ extension MasterView {
             default:
                 return
             }
+        }
+        
+        func resetGame() {
+            allNumbers = Array(0...75)
+            drawNumbers.removeAll()
+            isGameCompleted = false
         }
     }
 }
