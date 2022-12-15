@@ -27,7 +27,7 @@ struct CameraView: View {
                             
                     }
                     else{
-                        print("erro: nao foi encontrada nenhuma imagem")
+                        print("ERRO: Não foi encontrada nenhuma imagem.")
                     }
                 case .failure(let err):
                     print(err.localizedDescription)
@@ -38,7 +38,7 @@ struct CameraView: View {
                     .resizable()
                 
                 Spacer()
-                
+            
                 HStack {
                     Button(action: {
                         cameraService.capturePhoto()
@@ -54,14 +54,8 @@ struct CameraView: View {
                     })
                     .padding(.bottom, 10)
                 }
-//                Spacer()
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
 
-//Image(systemName: "arrow.triangle.2.circlepath.camera")
-//    .foregroundColor(.black)
-//    .padding()
-//    .background(Color.white)
-//    .clipShape(Circle())

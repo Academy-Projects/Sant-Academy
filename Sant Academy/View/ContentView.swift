@@ -11,72 +11,61 @@ struct ContentView: View {
     
     @State private var capturedImage: UIImage? = nil
     @State private var isCustomCameraViewPresent = false
+    @State private var showingOptions = false
     @State var items : [Any] = []
     @State var sheet = false
-    @State private var showingOptions = false
-     
+    
     var body: some View {
         ZStack{
             if capturedImage != nil {
                 ZStack{
                     creenshot
-                    Button(action: {
-                        showingOptions = true
-                    }, label: {
-                        Image(systemName: "square.and.arrow.up")
-                    }).confirmationDialog("", isPresented: $showingOptions, titleVisibility: .hidden){
-                        
-                        Button(action: {
-                            guard let images = ImageRenderer(content: creenshot).uiImage else{ return }
-                            items.removeAll()
-                            items.append(images)
-                            sheet.toggle()
-                        }, label: {
-                            Text("share")
-                                .fontWeight(.heavy)
-                        })
-                        
-                        Button("click to save"){
-                            guard let image = ImageRenderer(content: creenshot).uiImage else{
-                                return
-                            }
-                            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                        }
-                    }
-                 
-                    VStack {
-                        Spacer()
-                        Button(action: {
-                            isCustomCameraViewPresent.toggle()
-                            
-                        }, label: {
-                                ZStack{
-                                    Image(systemName: "arrow.triangle.2.circlepath.camera")
-                                        .foregroundColor(.black)
-                                        .padding()
-                                        .background(Color.white)
-                                        .clipShape(Circle())
-                                }.padding(.bottom, 20)
+                    HStack {
+                        VStack {
+                            Spacer()
+                            Button(action: {
+                                showingOptions = true
+                            }, label: {
+                                Image(systemName: "square.and.arrow.up")
+                                    .resizable()
+                                    .frame(width: 30, height: 35)
+                                    .foregroundColor(.white)
                             })
-                        .padding(.bottom)
-                        .fullScreenCover(isPresented: $isCustomCameraViewPresent, content: {
-                            CameraView(caturedImage: $capturedImage)
-                        })
+                            .confirmationDialog("", isPresented: $showingOptions, titleVisibility: .hidden){
+                                Button(action: {
+                                    guard let images = ImageRenderer(content: creenshot).uiImage else{ return }
+                                    items.removeAll()
+                                    items.append(images)
+                                    sheet.toggle()
+                                }, label: {
+                                    Text("Compartilhar")
+                                        .fontWeight(.heavy)
+                                })
+                                Button("Salvar") {
+                                    guard let image = ImageRenderer(content: creenshot).uiImage else{
+                                        return
+                                    }
+                                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                                }
+                            }
+                        }
+                        .padding(.leading, 15)
+                        .padding(.bottom, 50)
+                        Spacer()
                     }
-                    .sheet(isPresented: $sheet, content: {
-                        ShareSheet(items: items)
-                    })
-                    .padding()
+                    
+                    CloseView()
+                    
+                        .sheet(isPresented: $sheet, content: {
+                            ShareSheet(items: items)
+                        })
+                        .padding()
                 }
             } else {
-//                Image("mold2")
-//                    .resizable()
-//                Color(UIColor.systemBackground)
                 CameraView(caturedImage: $capturedImage)
             }
         }
     }
-    
     var creenshot: some View{
         ZStack{
             if let capturedImage = capturedImage {
@@ -87,15 +76,11 @@ struct ContentView: View {
                 Image("mold3")
                     .resizable()
             }else {
-                //                Image("mold2")
-                //                    .resizable()
-                //                Color(UIColor.systemBackground)
-                                CameraView(caturedImage: $capturedImage)
+                CameraView(caturedImage: $capturedImage)
             }
         }
     }
 }
-
 
 struct ShareSheet: UIViewControllerRepresentable{
     
@@ -112,3 +97,6 @@ struct ShareSheet: UIViewControllerRepresentable{
 }
 
 
+//Image("mold2")
+// .resizable()
+//Color(UIColor.systemBackground)
