@@ -20,15 +20,35 @@ struct ContentView: View {
             if capturedImage != nil {
                 ZStack{
                     creenshot
+//                        .scaledToFit()
                     HStack {
                         VStack {
+                            Button(action: {
+                                isCustomCameraViewPresent.toggle()
+                            }, label: {
+                                ZStack{
+                                    Image(systemName: "x.circle.fill")
+                                        .resizable()
+                                        .foregroundColor(.white)
+                                        .frame(width: UIScreen.main.bounds.width * 0.07, height: UIScreen.main.bounds.height * 0.033)
+                                        .padding(.top, 8)
+                                }
+                            })
+                            .fullScreenCover(isPresented: $isCustomCameraViewPresent, content: {
+                                CameraView(caturedImage: $capturedImage)
+                            })
                             Spacer()
+                        }
+                        
+                        Spacer()
+                        
+                        VStack {
                             Button(action: {
                                 showingOptions = true
                             }, label: {
                                 Image(systemName: "square.and.arrow.up")
                                     .resizable()
-                                    .frame(width: 30, height: 35)
+                                    .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.height * 0.033)
                                     .foregroundColor(.white)
                             })
                             .confirmationDialog("", isPresented: $showingOptions, titleVisibility: .hidden){
@@ -48,28 +68,6 @@ struct ContentView: View {
                                     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                                 }
                             }
-                        }
-                        .padding(.leading, 15)
-                        .padding(.bottom, 50)
-                        Spacer()
-                    }
-                    HStack{
-                        Spacer()
-                        VStack {
-                            Button(action: {
-                                isCustomCameraViewPresent.toggle()
-                            }, label: {
-                                ZStack{
-                                    Image(systemName: "x.circle.fill")
-                                        .resizable()
-                                        .foregroundColor(.white)
-                                        .frame(width: 30, height: 30)
-                                        .padding(.top, 8)
-                                }.padding(.top, 15)
-                            })
-                            .fullScreenCover(isPresented: $isCustomCameraViewPresent, content: {
-                                CameraView(caturedImage: $capturedImage)
-                            })
                             Spacer()
                         }
                     }
@@ -89,7 +87,7 @@ struct ContentView: View {
                 Image(uiImage: capturedImage)
                     .resizable()
                     .scaledToFit()
-                    .ignoresSafeArea()
+
                 Image("mold3")
                     .resizable()
             }else {
@@ -112,8 +110,3 @@ struct ShareSheet: UIViewControllerRepresentable{
         
     }
 }
-
-
-//Image("mold2")
-// .resizable()
-//Color(UIColor.systemBackground)
