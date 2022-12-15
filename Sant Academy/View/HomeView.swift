@@ -9,65 +9,69 @@ import SwiftUI
 struct HomeView: View {
     let vm = MasterView.ViewModel()
     var body: some View {
-        ZStack {
-            VStack(spacing: 12){
-                HStack{
-                    Spacer()
-                    Button {
+        GeometryReader{ geometry in
+            ScrollView(.vertical){
+                ZStack {
+                    VStack(spacing: 12){
+                        HStack{
+                            Spacer()
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "camera")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: UIScreen.main.bounds.width*0.0846, height: UIScreen.main.bounds.height*0.0319)
+                                    .foregroundColor(.black)
+                            }
+                            
+                        }.padding(.bottom,28)
                         
-                    } label: {
-                        Image(systemName: "camera")
+                        Image("NatalAcademy")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 33, height: 27)
-                            .foregroundColor(.black)
-                    }
-
-                }.padding(.bottom,28)
-                
-                VStack(alignment: .center, spacing: 0){
-                    Text("Natal")
-                        .font(.largeTitle)
-                    Text("Academy")
-                        .font(.largeTitle)
+                            .frame(width: UIScreen.main.bounds.width*0.917, height: UIScreen.main.bounds.height*0.106)
+                        
+                        
+                        Image("HomeImage")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: UIScreen.main.bounds.width*0.698, height: UIScreen.main.bounds.height*0.390)
+                            .padding(.bottom,41)
+                        
+                        NavigationLink(destination: MasterView(viewModel: vm )) {
+                            ZStack{
+                                Rectangle()
+                                    .fill(Color("GreenButton"))
+                                    .frame(width: UIScreen.main.bounds.width*0.715, height: UIScreen.main.bounds.height*0.0722)
+                                    .cornerRadius(30)
+                                Text("Criar Sala")
+                                    .font(.title2)
+                                    .foregroundColor(Color.white)
+                            }
+                            
+                        }
+                        NavigationLink(destination: ContentView()) {
+                            ZStack{
+                                Rectangle()
+                                    .fill(Color("RedButton"))
+                                    .frame(width: UIScreen.main.bounds.width*0.715, height: UIScreen.main.bounds.height*0.0722)
+                                    .cornerRadius(30)
+                                Text("Entrar")
+                                    .font(.title2)
+                                    .foregroundColor(Color.white)
+                            }
+                            
+                        }
+                        
+                        
+                        Spacer()
+                        
+                    }.padding(18)
                 }
-                
-                Rectangle()
-                    .fill(Color.mint)
-                    .frame(width: 250, height:330)
-                    .cornerRadius(12)
-                    .padding(.bottom,41)
-                NavigationLink(destination: MasterView(viewModel: vm )) {
-                    ZStack{
-                        Rectangle()
-                            .fill(Color.blue)
-                            .frame(width: 279, height: 61)
-                            .cornerRadius(30)
-                        Text("Criar Sala")
-                            .font(.title2)
-                            .foregroundColor(Color.white)
-                    }
-                    
-                }
-                NavigationLink(destination: ContentView()) {
-                    ZStack{
-                        Rectangle()
-                            .fill(Color.blue)
-                            .frame(width: 279, height: 61)
-                            .cornerRadius(30)
-                        Text("Entrar")
-                            .font(.title2)
-                            .foregroundColor(Color.white)
-                    }
-                    
-                }
-                
-                
-                Spacer()
-                
-            }.padding(18)
+                .background(ignoresSafeAreaEdges: .all)
+            }
         }
-        .background(ignoresSafeAreaEdges: .all)
     }
 }
 

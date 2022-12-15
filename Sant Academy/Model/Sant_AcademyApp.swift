@@ -14,7 +14,10 @@ struct Sant_AcademyApp: App {
    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                HomeView()
+                
+            }
         }
     }
 }
