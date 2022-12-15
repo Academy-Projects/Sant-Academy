@@ -56,9 +56,9 @@ struct MasterView: View {
                      //     Color.gray
                         VStack(spacing: 0){
                             
-                            NavigationLink{
-                                //   presentationMode.wrappedValue.dismiss()
-                                HomeView()
+                            Button{
+                                   presentationMode.wrappedValue.dismiss()
+//                                HomeView()
                                 
                             } label: {
                                 
