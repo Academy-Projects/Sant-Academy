@@ -24,7 +24,8 @@ struct ContentView: View {
                     HStack {
                         VStack {
                             Button(action: {
-                                isCustomCameraViewPresent.toggle()
+//                                isCustomCameraViewPresent.toggle()
+                                capturedImage = nil
                             }, label: {
                                 ZStack{
                                     Image(systemName: "x.circle.fill")
@@ -79,7 +80,7 @@ struct ContentView: View {
             } else {
                 CameraView(caturedImage: $capturedImage)
             }
-        }
+        }.navigationBarHidden(true)
     }
     var creenshot: some View{
         ZStack{
