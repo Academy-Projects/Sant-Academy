@@ -9,8 +9,7 @@ import SwiftUI
 struct HomeView: View {
     let vm = MasterView.ViewModel()
     var body: some View {
-        GeometryReader{ geometry in
-            ScrollView(.vertical){
+      
                 ZStack {
                     VStack(spacing: 12){
                         HStack{
@@ -69,12 +68,11 @@ struct HomeView: View {
                         
                     }.padding(18)
                 }
+                .background(Color("Background"))
                 .onAppear{
                     UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
                     AppDelegate.orientationLock = .portrait
-                }
-            }
-            .background(Color("Background"))
+                
         }
     }
 }
