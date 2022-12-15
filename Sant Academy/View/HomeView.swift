@@ -4,7 +4,6 @@
 //
 //  Created by Lucas Santos on 14/12/22.
 //
-
 import SwiftUI
 
 struct HomeView: View {
@@ -26,7 +25,6 @@ struct HomeView: View {
                     .frame(width: 300, height:300)
                     .cornerRadius(12)
                 Spacer()
-                
                 NavigationLink(destination: MasterView()) {
                     ZStack{
                         Rectangle()

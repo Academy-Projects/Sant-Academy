@@ -11,7 +11,9 @@ import SwiftUI
 struct Sant_AcademyApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            NavigationView {
+                HomeView()
+            }
         }
     }
 }
