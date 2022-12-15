@@ -1,9 +1,5 @@
-const ws = require("express-ws");
-
 class Game {
-  createGameRoom(resquest, response) {
-
-  }
+  createGameRoom(resquest, response) {}
   
   authTest(request, response) {
     return response.json({

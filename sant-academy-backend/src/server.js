@@ -1,12 +1,15 @@
 const express = require("express");
+const http = require("http");
 const cors = require("cors");
-const ws = require("express-ws");
+const { WebSocketServer } = require("ws");
 
 const app = express();
-const wsInstance = ws(app);
+const server = http.createServer(app)
+const socket = new WebSocketServer({ server })
 
 const _ = require("./database/connection");
 const routes = require("./routes");
+const socketController = require("./controllers/socketController");
 
 // Middlewares
 app.use(express.json());
@@ -14,14 +17,8 @@ app.use(cors());
 
 // Gerenciadores de rotas
 app.use("/auth", routes.authRoute);
-app.use("/game", routes.gameRoute);
-
-// websocket teste
-app.ws("/socketteste", (ws, _) => {
-  ws.on("message", console.log);
-})
+socket.on("connection", socketController.connection);
 
 module.exports = {
-  server: app,
-  socket: wsInstance.getWss()
+  server: server
 };
