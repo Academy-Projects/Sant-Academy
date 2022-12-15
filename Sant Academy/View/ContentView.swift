@@ -88,7 +88,7 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit()
 
-                Image("mold3")
+                Image("MolduraMenor")
                     .resizable()
             }else {
                 CameraView(caturedImage: $capturedImage)
