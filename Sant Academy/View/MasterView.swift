@@ -23,43 +23,69 @@ struct MasterView: View {
         
         ZStack{
             
-            VStack(spacing: 0){
+//            VStack(spacing: 0){
                 
-                Button {
-                    //   presentationMode.wrappedValue.dismiss()
-                } label: {
-                    
-                    ZStack{
-                        Circle()
-                            .fill(Color.black)
-                        
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 24))
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                    }
-                    .frame(width: UIScreen.main.bounds.width*0.0426, height: UIScreen.main.bounds.height*0.09)
-                    
-                    
-                }
-                .padding(.top, 47)
-                .frame(maxWidth: .infinity, alignment: .leading)
+//                Button {
+//                    //   presentationMode.wrappedValue.dismiss()
+//                } label: {
+//
+//                    ZStack{
+//                        Circle()
+//                            .fill(Color.black)
+//
+//                        Image(systemName: "chevron.left")
+//                            .font(.system(size: 24))
+//                            .fontWeight(.semibold)
+//                            .foregroundColor(.white)
+//                    }
+//                    .frame(width: UIScreen.main.bounds.width*0.0426, height: UIScreen.main.bounds.height*0.09)
+//
+//
+//                }
+//                .padding(.top, 47)
+//                .frame(maxWidth: .infinity, alignment: .leading)
                 
                 HStack(alignment: .center){
                     
                     ZStack(alignment: .top){
                      //     Color.gray
                         VStack(spacing: 0){
+                            
+                            Button {
+                                //   presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                
+                                ZStack{
+                                    Circle()
+                                        .fill(Color.black)
+                                    
+                                    Image(systemName: "chevron.left")
+                                        .font(.system(size: 24))
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.white)
+                                }
+                                .frame(width: UIScreen.main.bounds.width*0.0426, height: UIScreen.main.bounds.height*0.09)
+                                
+                                
+                            }
+                           // .padding(.top, 47)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                       
                             Text("Número da Sala")
                                 .font(.system(size: 20))
                                 .fontWeight(.semibold)
                                 .padding(.bottom, 17)
                             
-                            Circle()
-                                .fill(Color.red)
-                                .frame(width: UIScreen.main.bounds.width*0.173)
-                                .padding(.bottom, 33)
+                            ZStack{
+                                Circle()
+                                    .fill(Color.green)
+                                    .frame(width: UIScreen.main.bounds.width*0.1729)
+                                    
+                                Circle()
+                                    .fill(Color.red)
+                                    .frame(width: UIScreen.main.bounds.width*0.1445)
+                            }
+                            .padding(.bottom, 33)
 
                             Button {
                                 print("clicked")
@@ -73,7 +99,7 @@ struct MasterView: View {
                                     .cornerRadius(22)
                             }
                             
-                            Spacer()
+                           // Spacer()
                             
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -82,7 +108,7 @@ struct MasterView: View {
                     
                     //Spacer()
                     
-                    ZStack(alignment: .top){
+                    ZStack(alignment: .center){
                         VStack(spacing: 0){
  
                             
@@ -103,7 +129,7 @@ struct MasterView: View {
                                             .fontWeight(.medium)
                                             .foregroundColor(.black)
                                     }
-                                    .frame(width: 63, height: 63)
+                                    .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
                                     
                                 }
                             }
@@ -113,17 +139,17 @@ struct MasterView: View {
                             //                            Text("Camera")
                             //                        }
                             
-                            Spacer()
+                          //  Spacer()
                         }.frame(maxWidth: .infinity, maxHeight: .infinity)
                         
-                    }
+                    }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
                     
                     
                     
                     .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
                 }
-            }
-            .frame(width: UIScreen.main.bounds.width*0.88, height: UIScreen.main.bounds.height*0.856)
+//            }
+//            .frame(width: UIScreen.main.bounds.width*0.88, height: UIScreen.main.bounds.height*0.856)
         }
         .navigationBarHidden(true)
         .onAppear{
