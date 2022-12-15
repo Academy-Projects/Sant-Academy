@@ -13,5 +13,6 @@ extension Color {
     static let greenButton = Color("GreenButton")
     static let yellowButton = Color("YellowButton")
     static let background = Color("Background")
+    static let circleBackground = Color("CircleBackground")
     
 }

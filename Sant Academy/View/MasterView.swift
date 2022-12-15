@@ -43,7 +43,7 @@ struct MasterView: View {
                             
                             ZStack{
                                 Circle()
-                                    .fill(Color.black)
+                                    .fill(Color.greenButton)
                                 
                                 Image(systemName: "chevron.left")
                                     .font(.system(size: 24))
@@ -57,20 +57,24 @@ struct MasterView: View {
                         // .padding(.top, 47)
                         .frame(maxWidth: .infinity, alignment: .leading)
                        
-                            Text("Número da Sala")
-                                .font(.system(size: 20))
-                                .fontWeight(.semibold)
-                                .foregroundColor(.black)
-                                .padding(.bottom, 17)
+//                            Text("Número da Sala")
+//                                .font(.system(size: 20))
+//                                .fontWeight(.semibold)
+//                                .foregroundColor(.black)
+//                                .padding(.bottom, 17)
                             
                             ZStack{
                                 Circle()
-                                    .fill(Color.green)
+                                    .fill(Color.greenButton)
                                     .frame(width: UIScreen.main.bounds.width*0.1729)
                                 
                                 Circle()
-                                    .fill(Color.red)
+                                    .fill(Color.redButton)
                                     .frame(width: UIScreen.main.bounds.width*0.1445)
+                                Text("B13")
+                                    .font(.system(size: 55))
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.white)
                             }
                             .padding(.bottom, 33)
                             
@@ -105,32 +109,36 @@ struct MasterView: View {
                     
                     VStack(spacing: 0){
                         
-                        ScrollView(){
+                        
                             Text("Histórico de bolas chamadas")
                                 .font(.system(size: 20))
                                 .fontWeight(.semibold)
                                 .foregroundColor(.black)
-                                .padding(.bottom, 17)
                                 .padding(.top, 47)
-                            
-                            LazyVGrid(columns: columns){
+                                .padding(.bottom, 17)
                                 
+                            
+                        ScrollView(){
+                            LazyVGrid(columns: columns){
+
                                 ForEach(viewModel.drawNumbers, id: \.self ) { item in
+
                                     
                                     ZStack{
                                         Circle()
-                                            .fill(Color.gray)
+                                            .fill(Color.circleBackground)
                                         Text(item)
-                                            .font(.system(size: 28))
+                                            .font(.system(size: 24))
                                             .fontWeight(.medium)
                                             .foregroundColor(.black)
                                     }
-                                    // .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
-                                    
+                                     .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
+
                                 }
                             }
-                            
-                        }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+
+                        }.frame(width: UIScreen.main.bounds.width*0.44)
+                                //, height: UIScreen.main.bounds.height*0.856)
                         
                         Spacer()
                     }
