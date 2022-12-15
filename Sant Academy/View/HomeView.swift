@@ -15,8 +15,8 @@ struct HomeView: View {
                     VStack(spacing: 12){
                         HStack{
                             Spacer()
-                            Button {
-                                
+                             NavigationLink{
+                                 ContentView()
                             } label: {
                                 Image(systemName: "camera")
                                     .resizable()
@@ -69,8 +69,12 @@ struct HomeView: View {
                         
                     }.padding(18)
                 }
-                .background(ignoresSafeAreaEdges: .all)
+                .onAppear{
+                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+                    AppDelegate.orientationLock = .portrait
+                }
             }
+            .background(Color("Background"))
         }
     }
 }
