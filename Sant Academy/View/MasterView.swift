@@ -29,50 +29,55 @@ struct MasterView: View {
         ZStack{
             
             Color.background.edgesIgnoringSafeArea(.all)
+            
+            HStack(alignment: .center){
                 
-                HStack(alignment: .center){
-                    
-                    ZStack(alignment: .top){
-                     //     Color.gray
-                        VStack(spacing: 0){
+                ZStack(alignment: .top){
+                    //     Color.gray
+                    VStack(spacing: 0){
+                        
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
                             
-                            Button {
-                                   presentationMode.wrappedValue.dismiss()
-
-                            } label: {
-                                
-                                ZStack{
-                                    Circle()
-                                        .fill(Color.black)
-                                    
-                                    Image(systemName: "chevron.left")
-                                        .font(.system(size: 24))
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                }
-                                .frame(width: UIScreen.main.bounds.width*0.0426, height: UIScreen.main.bounds.height*0.09)
-                                
-                                
-                            }
-                           // .padding(.top, 47)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                      
-                            Text("Número da Sala")
-                                .font(.system(size: 20))
-                                .fontWeight(.semibold)
-                                .padding(.bottom, 17)
+                        } label: {
                             
                             ZStack{
                                 Circle()
-                                    .fill(Color.green)
-                                    .frame(width: UIScreen.main.bounds.width*0.1729)
-                                    
+                                    .fill(Color.greenButton)
+                                
+                                Image(systemName: "chevron.left")
+                                    .font(.system(size: 24))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                            }
+                            .frame(width: UIScreen.main.bounds.width*0.0426, height: UIScreen.main.bounds.height*0.09)
+                            
+                            
+                        }
+                        // .padding(.top, 47)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                       
+//                            Text("Número da Sala")
+//                                .font(.system(size: 20))
+//                                .fontWeight(.semibold)
+//                                .foregroundColor(.black)
+//                                .padding(.bottom, 17)
+                            
+                            ZStack{
                                 Circle()
-                                    .fill(Color.red)
+                                    .fill(Color.greenButton)
+                                    .frame(width: UIScreen.main.bounds.width*0.1729)
+                                
+                                Circle()
+                                    .fill(Color.redButton)
                                     .frame(width: UIScreen.main.bounds.width*0.1445)
+                                Text("B13")
+                                    .font(.system(size: 55))
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.white)
                             }
                             .padding(.bottom, 33)
-
+                            
                             Button {
                                 print("clicked")
                                 viewModel.raffle()
@@ -81,74 +86,80 @@ struct MasterView: View {
                                 Text("Sortear")
                                     .font(.system(size: 17))
                                     .fontWeight(.semibold)
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color.black)
                                     .frame(width: UIScreen.main.bounds.width*0.2701, height: UIScreen.main.bounds.height*0.1282)
-                                    .background(Rectangle().fill(Color.black))
-                                    .cornerRadius(22)
+                                    .background(Rectangle().fill(Color.yellowButton))
+                                    .cornerRadius(30)
                             }
-                            
-                           // Spacer()
-                            
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    }
-                    .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                    
-                    //Spacer()
-                    
-                    ZStack(alignment: .center){
                         
-                        Rectangle()
-                            .fill(.background)
-                            .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                            
-                        VStack(spacing: 0){
- 
-                            
+                        // Spacer()
+                        
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+                
+                //Spacer()
+                
+                ZStack(alignment: .center){
+                    
+                    Rectangle()
+                        .fill(Color.background)
+                        .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+                    
+                    VStack(spacing: 0){
+                        
+                        
                             Text("Histórico de bolas chamadas")
                                 .font(.system(size: 20))
                                 .fontWeight(.semibold)
+                                .foregroundColor(.black)
+                                .padding(.top, 47)
                                 .padding(.bottom, 17)
-                            
-                            LazyVGrid(columns: columns){
                                 
+                            
+                        ScrollView(){
+                            LazyVGrid(columns: columns){
+
                                 ForEach(viewModel.drawNumbers, id: \.self ) { item in
+
                                     
                                     ZStack{
                                         Circle()
-                                            .fill(Color.gray)
+                                            .fill(Color.circleBackground)
                                         Text(item)
-                                            .font(.system(size: 28))
+                                            .font(.system(size: 24))
                                             .fontWeight(.medium)
                                             .foregroundColor(.black)
                                     }
-                                   // .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
-                                    
+                                     .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
+
                                 }
                             }
 
-                        }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+                        }.frame(width: UIScreen.main.bounds.width*0.44)
+                                //, height: UIScreen.main.bounds.height*0.856)
                         
                         Spacer()
-                        
-                    }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                    
-                    
-                    
+                    }
+                }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+                
+                
+                
                     .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                }
-//            }
-//            .frame(width: UIScreen.main.bounds.width*0.88, height: UIScreen.main.bounds.height*0.856)
+            }
+            //            }
+            //            .frame(width: UIScreen.main.bounds.width*0.88, height: UIScreen.main.bounds.height*0.856)
         }
         .navigationBarHidden(true)
         .onAppear{
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
             AppDelegate.orientationLock = .landscape
         }
-        //        .onDisappear{
-        //            AppDelegate.orientationLock = .all
-        //        }
-        //
+        .onDisappear{
+            viewModel.resetGame()
+        }
+        
     }
 }
 
