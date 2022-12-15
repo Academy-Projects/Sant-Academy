@@ -37,7 +37,7 @@ struct MasterView: View {
                         VStack(spacing: 0){
                             
                             Button {
-                                //   presentationMode.wrappedValue.dismiss()
+                                   presentationMode.wrappedValue.dismiss()
                             } label: {
                                 
                                 ZStack{
@@ -96,6 +96,11 @@ struct MasterView: View {
                     //Spacer()
                     
                     ZStack(alignment: .center){
+                        
+                        Rectangle()
+                            .fill(.background)
+                            .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+                            
                         VStack(spacing: 0){
  
                             
@@ -116,12 +121,12 @@ struct MasterView: View {
                                             .fontWeight(.medium)
                                             .foregroundColor(.black)
                                     }
-                                    .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
+                                   // .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
                                     
                                 }
                             }
 
-                        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
                         
                         Spacer()
                         
