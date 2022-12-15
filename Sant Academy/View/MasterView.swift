@@ -38,6 +38,7 @@ struct MasterView: View {
                             
                             Button {
                                    presentationMode.wrappedValue.dismiss()
+
                             } label: {
                                 
                                 ZStack{
