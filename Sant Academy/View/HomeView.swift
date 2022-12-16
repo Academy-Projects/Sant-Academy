@@ -48,7 +48,7 @@ struct HomeView: View {
                                     .fill(Color("GreenButton"))
                                     .frame(width: UIScreen.main.bounds.width*0.715, height: UIScreen.main.bounds.height*0.0722)
                                     .cornerRadius(30)
-                                Text("Criar Sala")
+                                Text("Sortear")
                                     .font(.title2)
                                     .foregroundColor(Color.white)
                             }
@@ -60,26 +60,13 @@ struct HomeView: View {
                                     .fill(Color("RedButton"))
                                     .frame(width: UIScreen.main.bounds.width*0.715, height: UIScreen.main.bounds.height*0.0722)
                                     .cornerRadius(30)
-                                Text("Entrar")
+                                Text("Nova Cartela")
                                     .font(.title2)
                                     .foregroundColor(Color.white)
                             }
 
                         }
-//                        Button(action: {confeteBool = true}, label: {
-//                            Rectangle()
-//                                .fill(Color("RedButton"))
-//                                .frame(width: UIScreen.main.bounds.width*0.715, height: UIScreen.main.bounds.height*0.0722)
-//                                .cornerRadius(30)
-//                            Text("Entrar")
-//                                .font(.title2)
-//                                .foregroundColor(Color.white)
-//                        })
-//
-//                        if confeteBool == true {
-//                            congrats()
-//                        }
-                        
+
                         Spacer()
                         
                     }.padding(18)
