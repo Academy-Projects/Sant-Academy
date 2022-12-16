@@ -33,7 +33,7 @@ struct MasterView: View {
             HStack(alignment: .center){
                 
                 ZStack(alignment: .top){
-                    //     Color.gray
+
                     VStack(spacing: 0){
                         
                         Button {
@@ -54,7 +54,7 @@ struct MasterView: View {
                             
                             
                         }
-                        // .padding(.top, 47)
+
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
                         ZStack{
@@ -92,14 +92,10 @@ struct MasterView: View {
                                 .cornerRadius(30)
                         }
                         
-                        // Spacer()
-                        
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                
-                //Spacer()
                 
                 ZStack(alignment: .center){
                     
@@ -138,15 +134,11 @@ struct MasterView: View {
                             }
                             
                         }.frame(width: UIScreen.main.bounds.width*0.44)
-                        //, height: UIScreen.main.bounds.height*0.856)
                         
                         Spacer()
                     }
                 }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                
-                
-                
-                    .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+
             }
 
           Image("Luzes")
