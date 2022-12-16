@@ -13,6 +13,8 @@ struct BangoRectangleView: View {
     let font: Font
     let fontWeight: Font.Weight
     let color: Color
+    let widthScale: CGFloat
+    let heightScale: CGFloat
     
     var body: some View {
         ZStack{
@@ -26,6 +28,6 @@ struct BangoRectangleView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
             
-        }.frame(width: 66, height: 50)
+        }.frame(width: 66 * self.widthScale, height: 50 * self.heightScale)
     }
 }

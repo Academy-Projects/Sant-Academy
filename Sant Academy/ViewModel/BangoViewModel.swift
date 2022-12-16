@@ -1,5 +1,5 @@
 //
-//  BangoCardViewModel.swift
+//  BangoViewModel.swift
 //  Sant Academy
 //
 //  Created by Iago Ramos on 15/12/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BangoCardViewModel: ObservableObject{
+class BangoViewModel: ObservableObject{
     @Published var card: [String: [String]] = [:]
     @Published var selectedRecs: [String: [Bool]] = [:]
     @Published var recsRemaining: Int = 24
@@ -15,7 +15,7 @@ class BangoCardViewModel: ObservableObject{
     init() {
         self.card = [
             "b": self.getColumn(1, 5),
-            "i": self.getColumn(16, 5),
+            "a": self.getColumn(16, 5),
             "n": self.getColumn(31, 4),
             "g": self.getColumn(46, 5),
             "o": self.getColumn(61, 5)
@@ -24,7 +24,7 @@ class BangoCardViewModel: ObservableObject{
         let falseArray = [false, false, false, false, false]
         self.selectedRecs = [
             "b": falseArray,
-            "i": falseArray,
+            "a": falseArray,
             "n": falseArray,
             "g": falseArray,
             "o": falseArray

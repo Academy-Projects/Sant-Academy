@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct BangoView: View {
-    @ObservedObject var viewModel = BangoCardViewModel()
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var viewModel = BangoViewModel()
     
     let rows = [
         GridItem(.flexible(), spacing: -30),
@@ -19,81 +20,121 @@ struct BangoView: View {
         GridItem(.flexible(), spacing: -30)
     ]
     
-    let bingo = Array("bingo")
+    let bango = Array("bango")
     
     var body: some View {
-        ZStack{
-            Color("backgroundColor").edgesIgnoringSafeArea(.all)
+        GeometryReader{ geometry in
+            let widthScale = geometry.size.width / 844
+            let heightScale = geometry.size.height / 390
             
-            HStack(){
-                VStack{
-                    Circle()
-                        .strokeBorder(Color("bangoGreen"), lineWidth: 10)
-                        .frame(width: 122, height: 122)
-                        .background(){
-                            Circle().fill(Color("bangoRed"))
-                            
-                            Text(String(viewModel.recsRemaining))
-                                .font(.largeTitle)
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
-                        }
-                    
-                    Button {
-                        
-                    } label: {
-                        BangoButtonView()
-                            .padding(.top, 20)
-                    }
-
-                }
-                .padding(.trailing, 70)
+            ZStack{
+                Color("background").edgesIgnoringSafeArea(.all)
                 
-                LazyHGrid(rows: rows, spacing: 4) {
-                    ForEach(bingo, id: \.self){ c in
-                        BangoRectangleView(
-                            rectangleColor: "bangoGreen",
-                            text: String(c).uppercased(),
-                            font: .title,
-                            fontWeight: .bold,
-                            color: .white
-                        )
+                HStack(){
+                    ZStack{
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            ZStack{
+                                Circle()
+                                    .fill(Color.greenButton)
+                                
+                                Image(systemName: "chevron.left")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                            }
+                            .frame(width: UIScreen.main.bounds.width*0.0426, height: UIScreen.main.bounds.height*0.09)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                        .padding(.top, 20)
                         
-                        let sortedNumbers = viewModel.card[String(c)]!
-                        
-                        ForEach(0..<5){ i in
-                            let isNumber: Int? = Int(sortedNumbers[i])
-                            let isSelected = viewModel.selectedRecs[String(c)]![i]
+                        VStack{
+                            Text("Bolas restantes:")
+                                .font(.system(size: 20))
+                                .fontWeight(.semibold)
+                                .foregroundColor(.black)
+                            
+                            Circle()
+                                .strokeBorder(Color("GreenButton"), lineWidth: 10)
+                                .frame(width: 122 * widthScale, height: 122 * heightScale)
+                                .background(){
+                                    Circle().fill(Color("RedButton"))
+                                    
+                                    Text(String(viewModel.recsRemaining))
+                                        .font(.system(size: 45 * heightScale))
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                }
                             
                             Button {
-                                viewModel.updateRecs(String(c), i)
+                                
                             } label: {
-                                BangoRectangleView(
-                                    rectangleColor: isSelected ? "bangoRed" : "bangoNumbers",
-                                    text: String(sortedNumbers[i]),
-                                    font: isNumber == nil ? .caption2 : .title,
-                                    fontWeight: .regular,
-                                    color: isSelected ? .white : .black
+                                BangoButtonView(
+                                    widthScale: widthScale,
+                                    heightScale: heightScale
                                 )
+                                    .padding(.top, 20)
                             }
 
                         }
                     }
+                    
+                    LazyHGrid(rows: rows, spacing: 4) {
+                        ForEach(bango, id: \.self){ bangoLetter in
+                            BangoRectangleView(
+                                rectangleColor: "GreenButton",
+                                text: String(bangoLetter).uppercased(),
+                                font: .title,
+                                fontWeight: .bold,
+                                color: .white,
+                                widthScale: widthScale,
+                                heightScale: heightScale
+                            )
+                            
+                            let sortedNumbers = viewModel.card[String(bangoLetter)]!
+                            
+                            ForEach(0..<5){ i in
+                                let isNumber = Int(sortedNumbers[i]) != nil
+                                let isSelected = viewModel.selectedRecs[String(bangoLetter)]![i]
+                                
+                                Button {
+                                    if(isNumber){
+                                        viewModel.updateRecs(String(bangoLetter), i)
+                                    }
+                                } label: {
+                                    BangoRectangleView(
+                                        rectangleColor: isSelected ? "RedButton" : "CircleBackground",
+                                        text: String(sortedNumbers[i]),
+                                        font: isNumber ? .title : .caption2,
+                                        fontWeight: .regular,
+                                        color: isSelected ? .white : .black,
+                                        widthScale: widthScale,
+                                        heightScale: heightScale
+                                    )
+                                }
+
+                            }
+                        }
+                    }.padding(.trailing, 50)
                 }
+                .padding(.top, 14)
+                
+                Image("lights")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                    .ignoresSafeArea()
             }
-            .padding(.top, 14)
         }
+        .navigationBarHidden(true)
         .onAppear{
-            print(self.viewModel.card)
-            
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
             AppDelegate.orientationLock = .landscape
         }
     }
 }
 
-struct BangoCardView_Previews: PreviewProvider {
+struct BangoView_Previews: PreviewProvider {
     static var previews: some View {
-        BangoCardView()
+        BangoView()
     }
 }

@@ -53,7 +53,7 @@ struct HomeView: View {
                             }
                             
                         }
-                        NavigationLink(destination: ContentView()) {
+                        NavigationLink(destination: BangoView()) {
                             ZStack{
                                 Rectangle()
                                     .fill(Color("RedButton"))
