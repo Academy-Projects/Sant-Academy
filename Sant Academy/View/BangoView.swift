@@ -124,6 +124,7 @@ struct BangoView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                     .ignoresSafeArea()
             }
+            .background(Color("Background"))
         }
         .navigationBarHidden(true)
         .onAppear{
