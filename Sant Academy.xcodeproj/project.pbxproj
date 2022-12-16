@@ -15,6 +15,7 @@
 		286B07722947AEB6008119AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286B07712947AEB6008119AF /* Assets.xcassets */; };
 		286B077E2947FB39008119AF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B077D2947FB39008119AF /* CameraView.swift */; };
 		286B07822947FD8E008119AF /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B07812947FD8E008119AF /* CameraModel.swift */; };
+		286B0785294BF4DF008119AF /* ConfeteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B0784294BF4DF008119AF /* ConfeteViewModel.swift */; };
 		68A22969294B957000124534 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A22968294B957000124534 /* HomeView.swift */; };
 		785466EF294B5AC000797FF4 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785466EE294B5AC000797FF4 /* MasterViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		286B077D2947FB39008119AF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		286B07812947FD8E008119AF /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		286B07832949457E008119AF /* Sant-Academy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Sant-Academy-Info.plist"; sourceTree = SOURCE_ROOT; };
+		286B0784294BF4DF008119AF /* ConfeteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfeteViewModel.swift; sourceTree = "<group>"; };
 		68A22968294B957000124534 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		785466EE294B5AC000797FF4 /* MasterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				785466EE294B5AC000797FF4 /* MasterViewModel.swift */,
+				286B0784294BF4DF008119AF /* ConfeteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				005E5F1F294B9772003F33DB /* Color+Extension.swift in Sources */,
 				286B077E2947FB39008119AF /* CameraView.swift in Sources */,
 				005E5F14294A4141003F33DB /* WebSocketManager.swift in Sources */,
+				286B0785294BF4DF008119AF /* ConfeteViewModel.swift in Sources */,
 				286B07702947AEB5008119AF /* ContentView.swift in Sources */,
 				68A22969294B957000124534 /* HomeView.swift in Sources */,
 				286B07822947FD8E008119AF /* CameraModel.swift in Sources */,
