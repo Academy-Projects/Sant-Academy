@@ -130,6 +130,9 @@ struct BangoView: View {
             UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
             AppDelegate.orientationLock = .landscape
         }
+        .onDisappear(){
+            viewModel.resetBango()
+        }
     }
 }
 

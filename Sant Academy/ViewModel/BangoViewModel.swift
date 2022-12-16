@@ -13,6 +13,15 @@ class BangoViewModel: ObservableObject{
     @Published var recsRemaining: Int = 24
     
     init() {
+        self.resetBango()
+    }
+    
+    func updateRecs(_ key: String, _ pos: Int){
+        selectedRecs[key]![pos].toggle()
+        recsRemaining -= selectedRecs[key]![pos] ? 1 : -1
+    }
+    
+    func resetBango(){
         self.card = [
             "b": self.getColumn(1, 5),
             "a": self.getColumn(16, 5),
@@ -29,11 +38,8 @@ class BangoViewModel: ObservableObject{
             "g": falseArray,
             "o": falseArray
         ]
-    }
-    
-    func updateRecs(_ key: String, _ pos: Int){
-        selectedRecs[key]![pos].toggle()
-        recsRemaining -= selectedRecs[key]![pos] ? 1 : -1
+        
+        self.recsRemaining = 24
     }
     
     private func getColumn(_ min: Int, _ quant: Int) -> [String]{
