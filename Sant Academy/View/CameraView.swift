@@ -33,7 +33,7 @@ struct CameraView: View {
                 }
             }
             ZStack{
-                Image("MolduraMenor")
+                Image("Moldura2")
                     .resizable()
                     .edgesIgnoringSafeArea(.bottom)
             
@@ -45,17 +45,17 @@ struct CameraView: View {
                         ZStack{
                             Circle()
                                 .stroke(Color.redButton, lineWidth: 8)
-                                .frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.height * 0.1)
+                                .frame(width: UIScreen.main.bounds.width * 0.17, height: UIScreen.main.bounds.height * 0.08)
                             Circle()
                                 .fill(Color.greenButton)
-                                .frame(width: UIScreen.main.bounds.width * 0.2, height: UIScreen.main.bounds.height * 0.09)
+                                .frame(width: UIScreen.main.bounds.width * 0.17, height: UIScreen.main.bounds.height * 0.07)
                                 
                             Image(systemName: "camera")
                                 .resizable()
                                 .foregroundColor(.white)
-                                .frame(width: UIScreen.main.bounds.width * 0.09, height: UIScreen.main.bounds.height * 0.03)
+                                .frame(width: UIScreen.main.bounds.width * 0.07, height: UIScreen.main.bounds.height * 0.025)
                         }
-                    }).padding(.bottom, 30)
+                    }).padding(.bottom, 55)
                 }
             }
         }

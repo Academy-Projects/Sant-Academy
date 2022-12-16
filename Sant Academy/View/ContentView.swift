@@ -31,8 +31,8 @@ struct ContentView: View {
                                     Image(systemName: "x.circle.fill")
                                         .resizable()
                                         .foregroundColor(.white)
-                                        .frame(width: UIScreen.main.bounds.width * 0.07, height: UIScreen.main.bounds.height * 0.033)
-                                        .padding(.top, 8)
+                                        .frame(width: UIScreen.main.bounds.width * 0.072, height: UIScreen.main.bounds.height * 0.033)
+//                                        .padding(.top, 8)
                                 }
                             })
                             .fullScreenCover(isPresented: $isCustomCameraViewPresent, content: {
@@ -49,7 +49,7 @@ struct ContentView: View {
                             }, label: {
                                 Image(systemName: "square.and.arrow.up")
                                     .resizable()
-                                    .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.height * 0.033)
+                                    .frame(width: UIScreen.main.bounds.width * 0.054, height: UIScreen.main.bounds.height * 0.033)
                                     .foregroundColor(.white)
                             })
                             .confirmationDialog("", isPresented: $showingOptions, titleVisibility: .hidden){
@@ -89,7 +89,7 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit()
 
-                Image("MolduraMenor")
+                Image("Moldura2")
                     .resizable()
             }else {
                 CameraView(caturedImage: $capturedImage)
