@@ -15,11 +15,10 @@
 		286B07722947AEB6008119AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286B07712947AEB6008119AF /* Assets.xcassets */; };
 		286B077E2947FB39008119AF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B077D2947FB39008119AF /* CameraView.swift */; };
 		286B07822947FD8E008119AF /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B07812947FD8E008119AF /* CameraModel.swift */; };
-		67AADEE9294B91A2001694D5 /* BangoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AADEE8294B91A2001694D5 /* BangoView.swift */; };
-		67AADEEB294B933B001694D5 /* BangoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AADEEA294B933B001694D5 /* BangoViewModel.swift */; };
-		67AADEEE294BB666001694D5 /* BangoRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AADEED294BB666001694D5 /* BangoRectangleView.swift */; };
-		67AADEF0294BB826001694D5 /* BangoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AADEEF294BB826001694D5 /* BangoButtonView.swift */; };
 		68A22969294B957000124534 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A22968294B957000124534 /* HomeView.swift */; };
+		67AADEE9294B91A2001694D5 /* BangoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AADEE8294B91A2001694D5 /* BangoCardView.swift */; };
+		67AADEEB294B933B001694D5 /* BangoCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AADEEA294B933B001694D5 /* BangoCardViewModel.swift */; };
+		67AADEF0294BB826001694D5 /* BangoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AADEEF294BB826001694D5 /* BangoButtonView.swift */; };
 		785466EF294B5AC000797FF4 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785466EE294B5AC000797FF4 /* MasterViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,11 +33,11 @@
 		286B077D2947FB39008119AF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		286B07812947FD8E008119AF /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		286B07832949457E008119AF /* Sant-Academy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Sant-Academy-Info.plist"; sourceTree = SOURCE_ROOT; };
-		67AADEE8294B91A2001694D5 /* BangoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BangoView.swift; sourceTree = "<group>"; };
-		67AADEEA294B933B001694D5 /* BangoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BangoViewModel.swift; sourceTree = "<group>"; };
+		68A22968294B957000124534 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		67AADEE8294B91A2001694D5 /* BangoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BangoCardView.swift; sourceTree = "<group>"; };
+		67AADEEA294B933B001694D5 /* BangoCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BangoCardViewModel.swift; sourceTree = "<group>"; };
 		67AADEED294BB666001694D5 /* BangoRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BangoRectangleView.swift; sourceTree = "<group>"; };
 		67AADEEF294BB826001694D5 /* BangoButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BangoButtonView.swift; sourceTree = "<group>"; };
-		68A22968294B957000124534 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		785466EE294B5AC000797FF4 /* MasterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,11 +103,12 @@
 			children = (
 				67AADEEC294BB64A001694D5 /* Components */,
 				286B077D2947FB39008119AF /* CameraView.swift */,
+				67AADEED294BB666001694D5 /* BangoRectangleView.swift */,
 				286B076F2947AEB5008119AF /* ContentView.swift */,
 				005E5F17294AE1B9003F33DB /* MasterView.swift */,
 				68A22968294B957000124534 /* HomeView.swift */,
 				286B07712947AEB6008119AF /* Assets.xcassets */,
-				67AADEE8294B91A2001694D5 /* BangoView.swift */,
+				67AADEE8294B91A2001694D5 /* BangoCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -117,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				67AADEEF294BB826001694D5 /* BangoButtonView.swift */,
-				67AADEED294BB666001694D5 /* BangoRectangleView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -126,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				785466EE294B5AC000797FF4 /* MasterViewModel.swift */,
-				67AADEEA294B933B001694D5 /* BangoViewModel.swift */,
+				67AADEEA294B933B001694D5 /* BangoCardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -203,10 +202,10 @@
 				785466EF294B5AC000797FF4 /* MasterViewModel.swift in Sources */,
 				005E5F18294AE1B9003F33DB /* MasterView.swift in Sources */,
 				005E5F1F294B9772003F33DB /* Color+Extension.swift in Sources */,
-				67AADEE9294B91A2001694D5 /* BangoView.swift in Sources */,
+				67AADEE9294B91A2001694D5 /* BangoCardView.swift in Sources */,
 				286B077E2947FB39008119AF /* CameraView.swift in Sources */,
 				005E5F14294A4141003F33DB /* WebSocketManager.swift in Sources */,
-				67AADEEB294B933B001694D5 /* BangoViewModel.swift in Sources */,
+				67AADEEB294B933B001694D5 /* BangoCardViewModel.swift in Sources */,
 				67AADEEE294BB666001694D5 /* BangoRectangleView.swift in Sources */,
 				286B07702947AEB5008119AF /* ContentView.swift in Sources */,
 				68A22969294B957000124534 /* HomeView.swift in Sources */,

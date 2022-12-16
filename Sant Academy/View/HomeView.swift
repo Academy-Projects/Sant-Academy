@@ -10,6 +10,7 @@ struct HomeView: View {
     
     let vm = MasterView.ViewModel()
     @State private var capturedImage: UIImage? = nil
+    @State var confeteBool = false
     
     var body: some View {
       
@@ -63,9 +64,21 @@ struct HomeView: View {
                                     .font(.title2)
                                     .foregroundColor(Color.white)
                             }
-                            
+
                         }
-                        
+//                        Button(action: {confeteBool = true}, label: {
+//                            Rectangle()
+//                                .fill(Color("RedButton"))
+//                                .frame(width: UIScreen.main.bounds.width*0.715, height: UIScreen.main.bounds.height*0.0722)
+//                                .cornerRadius(30)
+//                            Text("Entrar")
+//                                .font(.title2)
+//                                .foregroundColor(Color.white)
+//                        })
+//
+//                        if confeteBool == true {
+//                            congrats()
+//                        }
                         
                         Spacer()
                         
@@ -76,6 +89,24 @@ struct HomeView: View {
                     UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
                     AppDelegate.orientationLock = .portrait
                 
+        }
+    }
+}
+
+struct congrats: View{
+    var body: some View{
+        ZStack{
+            Circle()
+                .fill(Color.blue)
+                .frame(width: 12, height: 12)
+                .modifier(ParticlesModifier())
+                .offset(x: -100, y : -50)
+            
+            Circle()
+                .fill(Color.red)
+                .frame(width: 12, height: 12)
+                .modifier(ParticlesModifier())
+                .offset(x: 60, y : 70)
         }
     }
 }

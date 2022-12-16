@@ -33,7 +33,7 @@ struct MasterView: View {
             HStack(alignment: .center){
                 
                 ZStack(alignment: .top){
-                    //     Color.gray
+
                     VStack(spacing: 0){
                         
                         Button {
@@ -54,52 +54,48 @@ struct MasterView: View {
                             
                             
                         }
-                        // .padding(.top, 47)
+
                         .frame(maxWidth: .infinity, alignment: .leading)
-                       
-//                            Text("Número da Sala")
-//                                .font(.system(size: 20))
-//                                .fontWeight(.semibold)
-//                                .foregroundColor(.black)
-//                                .padding(.bottom, 17)
+                        
+                        ZStack{
+                            Circle()
+                                .fill(Color.greenButton)
+                                .frame(width: UIScreen.main.bounds.width*0.1729)
                             
-                            ZStack{
-                                Circle()
-                                    .fill(Color.greenButton)
-                                    .frame(width: UIScreen.main.bounds.width*0.1729)
+                            Circle()
+                                .fill(Color.redButton)
+                                .frame(width: UIScreen.main.bounds.width*0.1445)
+                            
+                            if viewModel.drawNumbers.isEmpty{
                                 
-                                Circle()
-                                    .fill(Color.redButton)
-                                    .frame(width: UIScreen.main.bounds.width*0.1445)
-                                Text("B13")
+                            } else {
+                                Text(viewModel.drawNumbers.last!)
                                     .font(.system(size: 55))
                                     .fontWeight(.medium)
                                     .foregroundColor(.white)
                             }
-                            .padding(.bottom, 33)
                             
-                            Button {
-                                print("clicked")
-                                viewModel.raffle()
-                                
-                            } label: {
-                                Text("Sortear")
-                                    .font(.system(size: 17))
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(Color.black)
-                                    .frame(width: UIScreen.main.bounds.width*0.2701, height: UIScreen.main.bounds.height*0.1282)
-                                    .background(Rectangle().fill(Color.yellowButton))
-                                    .cornerRadius(30)
-                            }
+                        }
+                        .padding(.bottom, 33)
                         
-                        // Spacer()
+                        Button {
+                            print("clicked")
+                            viewModel.raffle()
+                            
+                        } label: {
+                            Text("Sortear")
+                                .font(.system(size: 17))
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color.black)
+                                .frame(width: UIScreen.main.bounds.width*0.2701, height: UIScreen.main.bounds.height*0.1282)
+                                .background(Rectangle().fill(Color.yellowButton))
+                                .cornerRadius(30)
+                        }
                         
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                
-                //Spacer()
                 
                 ZStack(alignment: .center){
                     
@@ -110,19 +106,19 @@ struct MasterView: View {
                     VStack(spacing: 0){
                         
                         
-                            Text("Histórico de bolas chamadas")
-                                .font(.system(size: 20))
-                                .fontWeight(.semibold)
-                                .foregroundColor(.black)
-                                .padding(.top, 47)
-                                .padding(.bottom, 17)
-                                
-                            
+                        Text("Histórico de bolas chamadas")
+                            .font(.system(size: 20))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.black)
+                            .padding(.top, 47)
+                            .padding(.bottom, 17)
+                        
+                        
                         ScrollView(){
                             LazyVGrid(columns: columns){
-
-                                ForEach(viewModel.drawNumbers, id: \.self ) { item in
-
+                                
+                                ForEach(viewModel.drawNumbers.sorted(), id: \.self ) { item in
+                                    
                                     
                                     ZStack{
                                         Circle()
@@ -132,24 +128,25 @@ struct MasterView: View {
                                             .fontWeight(.medium)
                                             .foregroundColor(.black)
                                     }
-                                     .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
-
+                                    .frame(width: UIScreen.main.bounds.width*0.0785, height: UIScreen.main.bounds.height*0.1689)
+                                    
                                 }
                             }
-
+                            
                         }.frame(width: UIScreen.main.bounds.width*0.44)
-                                //, height: UIScreen.main.bounds.height*0.856)
                         
                         Spacer()
                     }
                 }.frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
-                
-                
-                
-                    .frame(width: UIScreen.main.bounds.width*0.44, height: UIScreen.main.bounds.height*0.856)
+
             }
-            //            }
-            //            .frame(width: UIScreen.main.bounds.width*0.88, height: UIScreen.main.bounds.height*0.856)
+
+          Image("Luzes")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: UIScreen.main.bounds.width*0.1291)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                .edgesIgnoringSafeArea(.all)
         }
         .navigationBarHidden(true)
         .onAppear{
