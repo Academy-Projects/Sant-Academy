@@ -18,26 +18,20 @@ struct CameraView: View {
     var body: some View {
         ZStack{
             
-            VStack(spacing: 0){
+           // VStack(spacing: 0){
                 
                 Button {
                     presentationMode.wrappedValue.dismiss()
                     
                 } label: {
                     
-                    ZStack{
-                        Circle()
-                            .fill(Color.greenButton)
-                        
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 24))
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                    }.frame(width: UIScreen.main.bounds.width*0.09, height: UIScreen.main.bounds.height*0.0426)
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .foregroundColor(.white)
+                        .frame(width: UIScreen.main.bounds.width * 0.072, height: UIScreen.main.bounds.height * 0.033)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.bottom,   8)
-                .padding(.leading, 8)
+             
 
                 ZStack{
                     
@@ -80,8 +74,23 @@ struct CameraView: View {
                             }
                         }).padding(.bottom, 55)
                     }
+                    
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                        
+                    } label: {
+                        
+                        Image(systemName: "chevron.left.circle.fill")
+                            .resizable()
+                            .foregroundColor(.white)
+                            .frame(width: UIScreen.main.bounds.width * 0.072, height: UIScreen.main.bounds.height * 0.033)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: . infinity, alignment: .topLeading)
+                    .padding(.top, 8)
+                    .padding(.leading, 8)
                 }
-            }.navigationBarHidden(true)
+           // }
+            .navigationBarHidden(true)
         }
     }
 }
