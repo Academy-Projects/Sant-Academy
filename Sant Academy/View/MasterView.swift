@@ -154,7 +154,7 @@ struct MasterView: View {
             AppDelegate.orientationLock = .landscape
         }
         .onDisappear{
-            viewModel.resetGame()
+           // viewModel.resetGame()
         }
         
     }
