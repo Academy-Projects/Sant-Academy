@@ -1,5 +1,5 @@
 //
-//  BangoCardView.swift
+//  BangoView.swift
 //  Sant Academy
 //
 //  Created by Iago Ramos on 15/12/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BangoCardView: View {
+struct BangoView: View {
     @ObservedObject var viewModel = BangoCardViewModel()
     
     let rows = [
