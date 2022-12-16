@@ -10,6 +10,7 @@ import SwiftUI
 struct BangoView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = BangoViewModel()
+    @State var confeteBool = false
     
     let rows = [
         GridItem(.flexible(), spacing: -30),
@@ -32,6 +33,9 @@ struct BangoView: View {
                 
                 HStack(){
                     ZStack{
+                        if confeteBool == true {
+                            congrats()
+                        }
                         Button {
                             presentationMode.wrappedValue.dismiss()
                         } label: {
@@ -68,7 +72,7 @@ struct BangoView: View {
                                 }
                             
                             Button {
-                                
+                                confeteBool = true
                             } label: {
                                 BangoButtonView(
                                     widthScale: widthScale,
